@@ -7,10 +7,10 @@ Entry.prototype.findWords = function(words) {
   var inputWord = words;
   var separated = inputWord.split(" ");
   console.log(separated);
-  for(var i = 1; i < separated.length; i++) {
+  for(var i = 0; i < separated.length; i++) {
     output.push(i);
   }
-  return output;
+  return output.length;
 };
 
 exports.entryModule = Entry;
