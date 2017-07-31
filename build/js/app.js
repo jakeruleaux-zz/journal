@@ -1,1 +1,37 @@
-!function r(n,e,t){function o(i,f){if(!e[i]){if(!n[i]){var a="function"==typeof require&&require;if(!f&&a)return a(i,!0);if(u)return u(i,!0);var c=new Error("Cannot find module '"+i+"'");throw c.code="MODULE_NOT_FOUND",c}var d=e[i]={exports:{}};n[i][0].call(d.exports,function(r){var e=n[i][1][r];return o(e||r)},d,d.exports,r,n,e,t)}return e[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}({1:[function(r,n,e){$(document).ready(function(){$(".input-journal").submit(function(r){r.preventDefault();var n=$("#words").val();new Entry("words").findWords(n).forEach(function(r){$("#counted").append("There are "+r+" words in your entry")})})})},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+function Entry(wordsEntered) {
+  this.words = wordsEntered;
+}
+
+Entry.prototype.findWords = function(words) {
+  var output = [];
+  var inputWord = words;
+  var separated = inputWord.split(" ");
+  console.log(separated);
+  for(var i = 1; i < separated.length; i++) {
+    output.push(i);
+  }
+  return output;
+};
+
+exports.entryModule = Entry;
+
+},{}],2:[function(require,module,exports){
+var Entry = require('./../js/journal.js').entryModule;
+
+$(document).ready(function() {
+  $('.input-journal').submit(function(event) {
+    event.preventDefault();
+    var words = $('#words').val();
+    console.log(words);
+    var counted = new Entry(words);
+    console.log(counted);
+    var output = counted.findWords(words);
+    output.forEach(function(element) {
+      $('#counted').append("There are " + element + " words in your entry");
+    });
+  });
+});
+
+
+},{"./../js/journal.js":1}]},{},[2]);

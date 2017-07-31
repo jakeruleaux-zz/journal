@@ -4,9 +4,13 @@ function Entry(wordsEntered) {
 
 Entry.prototype.findWords = function(words) {
   var output = [];
-  explode(words);
-  for(var i = 0; i < words.length; i++) {
+  var inputWord = words;
+  var separated = inputWord.split(" ");
+  console.log(separated);
+  for(var i = 1; i < separated.length; i++) {
     output.push(i);
   }
   return output;
 };
+
+exports.entryModule = Entry;
