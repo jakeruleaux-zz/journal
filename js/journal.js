@@ -18,4 +18,23 @@ Entry.prototype.findVowels = function getVowels(words) {
   return vowels.length;
 };
 
+Entry.prototype.findConsonents = function getConsonents(words) {
+  var consonents = words.match(/[bcdfghjklmnpqrstvwxyz]/gi);
+
+  return consonents.length;
+};
+
+Entry.prototype.findFirst = function getTeaser(words) {
+  return words.split(/\s+/).slice(0,8).join(" ");
+  // var firstEight = [];
+  // var inputWord = words;
+  // var seperated = inputWord.split(" ");
+  // for(var i = 0; i < 9; i++) {
+  //   firstEight.push(i);
+  //   console.log(firstEight)
+  // } return firstEight;
+
+};
+
+
 exports.entryModule = Entry;
