@@ -7,11 +7,16 @@ Entry.prototype.findWords = function(words) {
   var output = [];
   var inputWord = words;
   var separated = inputWord.split(" ");
-  console.log(separated);
   for(var i = 0; i < separated.length; i++) {
     output.push(i);
   }
   return output.length;
+};
+
+Entry.prototype.findVowels = function getVowels(words) {
+  var vowels = words.match(/[aeiou]/gi);
+
+  return vowels.length;
 };
 
 exports.entryModule = Entry;
@@ -23,11 +28,12 @@ $(document).ready(function() {
   $('.input-journal').submit(function(event) {
     event.preventDefault();
     var words = $('#words').val();
-    console.log(words);
     var counted = new Entry(words);
+    var vowels = new Entry(words);
+    var totalVowels = vowels.findVowels(words);
     var output = counted.findWords(words);
-    console.log(output);
-    // output.text(function(element) {
+    console.log(totalVowels);
+      $('#vowels').append("There is " + totalVowels + " vowels in yer words");
       $('#counted').append("There are " + output  + " words in your entry");
     });
   // });
